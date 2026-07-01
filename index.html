@@ -1,1 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>💌 Special Invitation</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#ffdde1,#ee9ca7);
+    overflow:hidden;
+}
+
+.card{
+    width:90%;
+    max-width:420px;
+    background:rgba(255,255,255,0.15);
+    backdrop-filter: blur(15px);
+    border-radius:20px;
+    padding:25px;
+    text-align:center;
+    box-shadow:0 10px 30px rgba(0,0,0,0.2);
+    color:white;
+}
+
+h1{
+    font-size:24px;
+    margin-bottom:15px;
+}
+
+p{margin:10px 0;}
+
+button{
+    padding:12px 18px;
+    border:none;
+    border-radius:12px;
+    font-size:16px;
+    cursor:pointer;
+    margin:8px;
+    transition:0.3s;
+}
+
+#openBtn{
+    background:#fff;
+    color:#e91e63;
+    font-weight:600;
+}
+
+#yes{
+    background:#4CAF50;
+    color:white;
+}
+
+#no{
+    background:#ff4d4d;
+    color:white;
+    position:relative;
+}
+
+input,select{
+    width:100%;
+    padding:10px;
+    margin-top:10px;
+    border-radius:10px;
+    border:none;
+    outline:none;
+}
+
+.section{display:none;}
+
+#done h1{
+    font-size:28px;
+}
+
+.heart{
+    position:absolute;
+    top:100%;
+    color:red;
+    animation:float 6s linear forwards;
+}
+
+@keyframes float{
+    to{
+        transform:translateY(-120vh);
+        opacity:0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+<!-- START -->
+<div id="start">
+<h1>💌 Someone has a special question for you...</h1>
+<button id="openBtn">Open Invitation</button>
+</div>
+
+<!-- QUESTION -->
+<div id="question" class="section">
+<h1>Will you go on a date with me? ❤️</h1>
+<button id="yes">Yes 💖</button>
+<button id="no">No 🙈</button>
+</div>
+
+<!-- FORM -->
+<div id="form" class="section">
+<h2>Yay! 😊</h2>
+
+<p>When are you free?</p>
+<input type="date" id="date">
+
+<input type="time" id="time">
+
+<p>What would you like to do?</p>
+<select id="activity">
+<option>🍕 Pizza</option>
+<option>☕ Coffee</option>
+<option>🍦 Ice Cream</option>
+<option>🎬 Movie</option>
+<option>🌳 Walk</option>
+<option>🧺 Picnic</option>
+<option>🍝 Italian Food</option>
+<option>✨ Surprise Me</option>
+</select>
+
+<button id="submit">Submit ❤️</button>
+</div>
+
+<!-- DONE -->
+<div id="done" class="section">
+<h1>🎉 It’s a Date!</h1>
+<p>I can’t wait to see you ❤️</p>
+</div>
+
+</div>
+
+<script>
+
+const start = document.getElementById("start");
+const question = document.getElementById("question");
+const form = document.getElementById("form");
+const done = document.getElementById("done");
+
+document.getElementById("openBtn").onclick = ()=>{
+    start.style.display="none";
+    question.style.display="block";
+};
+
+const noBtn = document.getElementById("no");
+
+function moveNo(){
+    const x = Math.random() * 200 - 100;
+    const y = Math.random() * 200 - 100;
+    noBtn.style.transform = `translate(${x}px, ${y}px)`;
+}
+
+noBtn.addEventListener("mouseover", moveNo);
+noBtn.addEventListener("touchstart", moveNo);
+
+document.getElementById("yes").onclick = ()=>{
+    question.style.display="none";
+    form.style.display="block";
+};
+
+document.getElementById("submit").onclick = ()=>{
+    form.style.display="none";
+    done.style.display="block";
+    startHearts();
+};
+
+function startHearts(){
+    setInterval(()=>{
+        const heart = document.createElement("div");
+        heart.className="heart";
+        heart.innerHTML="❤️";
+        heart.style.left=Math.random()*100+"vw";
+        heart.style.fontSize=(10+Math.random()*25)+"px";
+        document.body.appendChild(heart);
+
+        setTimeout(()=>heart.remove(),6000);
+    },200);
+}
+
+</script>
+
+</body>
+</html>
