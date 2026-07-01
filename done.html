@@ -1,1 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>It's a Date ❤️</title>
 
+<style>
+body{
+margin:0;
+font-family:Arial,sans-serif;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+background:linear-gradient(135deg,#ff9a9e,#fad0c4);
+overflow:hidden;
+}
+
+.card{
+background:rgba(255,255,255,.95);
+padding:40px;
+border-radius:20px;
+width:90%;
+max-width:420px;
+text-align:center;
+box-shadow:0 10px 30px rgba(0,0,0,.2);
+position:relative;
+z-index:2;
+animation:pop 0.8s;
+}
+
+h1{
+color:#e91e63;
+font-size:32px;
+}
+
+p{
+font-size:18px;
+color:#444;
+margin-top:10px;
+}
+
+@keyframes pop{
+from{transform:scale(0.8);opacity:0;}
+to{transform:scale(1);opacity:1;}
+}
+
+.heart{
+position:absolute;
+color:red;
+font-size:20px;
+animation:float 6s linear infinite;
+}
+
+@keyframes float{
+from{
+transform:translateY(100vh);
+opacity:1;
+}
+to{
+transform:translateY(-10vh);
+opacity:0;
+}
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="card">
+<h1>🎉 It’s a Date! ❤️</h1>
+<p>I can’t wait to see you 😊</p>
+<p>Everything is set perfectly 💖</p>
+</div>
+
+<script>
+
+function hearts(){
+setInterval(()=>{
+const h = document.createElement("div");
+h.className="heart";
+h.innerHTML="❤️";
+h.style.left=Math.random()*100+"vw";
+h.style.fontSize=(10+Math.random()*25)+"px";
+document.body.appendChild(h);
+
+setTimeout(()=>h.remove(),6000);
+},200);
+}
+
+hearts();
+
+</script>
+
+</body>
+</html>
