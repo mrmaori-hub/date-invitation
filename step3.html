@@ -1,1 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Choose Activity</title>
 
+<style>
+body{
+margin:0;
+font-family:Arial,sans-serif;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+background:linear-gradient(135deg,#ffecd2,#fcb69f);
+}
+
+.card{
+background:white;
+padding:30px;
+border-radius:20px;
+width:90%;
+max-width:420px;
+text-align:center;
+box-shadow:0 10px 30px rgba(0,0,0,.2);
+}
+
+h1{
+color:#e91e63;
+}
+
+.options{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:10px;
+margin-top:20px;
+}
+
+button{
+padding:12px;
+border:none;
+border-radius:10px;
+font-size:16px;
+cursor:pointer;
+background:#f1f1f1;
+transition:0.2s;
+}
+
+button:hover{
+background:#e91e63;
+color:white;
+transform:scale(1.05);
+}
+
+.selected{
+background:#e91e63 !important;
+color:white;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="card">
+
+<h1>🍽️ What would you like to do?</h1>
+
+<div class="options">
+<button onclick="select(this)">🍕 Pizza</button>
+<button onclick="select(this)">☕ Coffee</button>
+<button onclick="select(this)">🍦 Ice Cream</button>
+<button onclick="select(this)">🎬 Movie</button>
+<button onclick="select(this)">🌳 Walk</button>
+<button onclick="select(this)">🧺 Picnic</button>
+</div>
+
+</div>
+
+<script>
+
+function select(btn){
+document.querySelectorAll("button").forEach(b=>b.classList.remove("selected"));
+btn.classList.add("selected");
+
+setTimeout(()=>{
+window.location="done.html";
+},600);
+}
+
+</script>
+
+</body>
+</html>
